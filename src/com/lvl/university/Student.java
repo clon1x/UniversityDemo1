@@ -8,14 +8,14 @@ public class Student {
 	 */
 	private double gpa;
 
+	public Student(String name) {
+		this.name = name;
+	}
+	
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 	public void addCourse(Course newCourse) {
 		//TODO code to store a ref to a new course in the student object
 	}
