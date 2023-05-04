@@ -25,4 +25,9 @@ public class StudentArrayList implements StudentList {
 		return students.iterator();
 	}
 
+	@Override
+	public int size() {
+		return students.size();
+	}
+
 }

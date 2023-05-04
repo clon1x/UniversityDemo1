@@ -79,13 +79,11 @@ public class StudentLinkedList2 implements StudentList {
 			return;
 		}
 		
-		StudentNode current = head;
-		while (current.next() != null) {
+		for (StudentNode current = head; current != null; current = current.next()) {
 			if (current.next().getData() == student) {
 				current.setNextNode(current.next().next());
+				return;
 			}
-			
-			current = current.next();
 		}
 	}
 
@@ -106,6 +104,11 @@ public class StudentLinkedList2 implements StudentList {
 	@Override
 	public Iterator<Student> iterator() {
 		return new StudentLinkedList2Iterator();
+	}
+
+	@Override
+	public int size() {
+		return size;
 	}
 
 }

@@ -30,4 +30,9 @@ public class StudentLinkedList implements StudentList {
 		return students.iterator();
 	}
 
+	@Override
+	public int size() {
+		return students.size();
+	}
+
 }
