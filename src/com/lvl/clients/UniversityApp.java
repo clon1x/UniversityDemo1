@@ -19,6 +19,9 @@ public class UniversityApp {
 		System.out.println(john.getName() + " GPA: " + john.getGPA());
 		
 		System.out.println(mary);
+		
+		Student.setMinimumGPA(4.5);
+		System.out.println("Minimum GPA: " + Student.getMinimumGPA());
 
 	}
 

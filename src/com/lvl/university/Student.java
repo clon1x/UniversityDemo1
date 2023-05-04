@@ -2,6 +2,8 @@ package com.lvl.university;
 
 public class Student {
 
+	private static double minimumGPA = 5;
+
 	private String name;
 	private String address;
 	/**
@@ -18,6 +20,14 @@ public class Student {
 	public Student(String name, String address) {
 		this.name = name;
 		this.address = address;
+	}
+	
+	public static double getMinimumGPA() {
+		return minimumGPA;
+	}
+
+	public static void setMinimumGPA(double minimumGPA) {
+		Student.minimumGPA = minimumGPA;
 	}
 
 	public String getName() {
@@ -38,6 +48,9 @@ public class Student {
 
 	public void addCourse(Course newCourse, char grade) {
 		// use the grade and course to update GPA
+		if (this.gpa < Student.minimumGPA) {
+			// put student on academic probation
+		}
 	}
 
 	public double getGPA() {
