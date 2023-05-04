@@ -2,7 +2,7 @@ package com.lvl.university.clients;
 
 import java.util.Iterator;
 
-import com.lvl.university.collections.StudentLinkedList;
+import com.lvl.university.collections.StudentArrayList;
 import com.lvl.university.collections.StudentList;
 import com.lvl.university.model.Course;
 import com.lvl.university.model.Section;
@@ -29,7 +29,7 @@ public class UniversityApp {
 		System.out.println("Minimum GPA: " + Student.getMinimumGPA());
 
 		
-		StudentList students = new StudentLinkedList();
+		StudentList students = new StudentArrayList();
 		students.add(john);
 		students.add(mary);
 
