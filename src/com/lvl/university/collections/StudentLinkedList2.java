@@ -13,9 +13,9 @@ public class StudentLinkedList2 implements StudentList {
 		private Student data;
 		private StudentNode next;
 		
-		public StudentNode(Student data) {
+		public StudentNode(Student data, StudentNode next) {
 			this.data = data;
-			this.next = null;
+			this.next = next;
 		}
 		
 		public void setNextNode(StudentNode next) {
@@ -38,7 +38,7 @@ public class StudentLinkedList2 implements StudentList {
 		private int current;
 		private int last;
 		
-		public StudentLinkedList2Iterator(StudentNode head) {
+		public StudentLinkedList2Iterator() {
 			current = 0;
 			last = 0;
 			createStudentsArray(head); 
@@ -66,21 +66,8 @@ public class StudentLinkedList2 implements StudentList {
 	
 	@Override
 	public void add(Student student) {
-		StudentNode newNode = new StudentNode(student);
-		if (head == null) {
-			head = newNode;
-		} else {
-			StudentNode tail = head;
-			while (tail.next() != null) {
-				tail = tail.next();
-			}
-			tail.setNextNode(newNode);
-		}
+		head = new StudentNode(student, head);
 		size++;
-	}
-
-	public int getSize() {
-		return this.size;
 	}
 
 	@Override
@@ -118,7 +105,7 @@ public class StudentLinkedList2 implements StudentList {
 
 	@Override
 	public Iterator<Student> iterator() {
-		return new StudentLinkedList2Iterator(head);
+		return new StudentLinkedList2Iterator();
 	}
 
 }
