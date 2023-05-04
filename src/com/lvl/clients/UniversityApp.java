@@ -17,6 +17,8 @@ public class UniversityApp {
 		john.addCourse(course, 'B');
 		
 		System.out.println(john.getName() + " GPA: " + john.getGPA());
+		
+		System.out.println(mary);
 
 	}
 

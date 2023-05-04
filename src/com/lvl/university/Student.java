@@ -43,5 +43,10 @@ public class Student {
 	public double getGPA() {
 		return gpa;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [name=" + name + ", address=" + address + ", gpa=" + gpa + "]";
+	}
 	
 }
