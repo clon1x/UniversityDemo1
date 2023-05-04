@@ -1,4 +1,4 @@
-package com.lvl.university.api;
+package com.lvl.university.collections;
 
 import com.lvl.university.model.Student;
 
