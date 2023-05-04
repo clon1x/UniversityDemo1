@@ -37,4 +37,8 @@ public class Course {
 		this.credits = credits;
 	}
 	
+	public Section createSection(String semester, String place, String daysAndTimes) {
+		return new Section(this, semester, place, daysAndTimes);
+	}
+	
 }
