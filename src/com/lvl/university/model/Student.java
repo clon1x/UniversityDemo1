@@ -1,4 +1,4 @@
-package com.lvl.university;
+package com.lvl.university.model;
 
 public class Student {
 

@@ -1,7 +1,7 @@
-package com.lvl.clients;
+package com.lvl.university.clients;
 
-import com.lvl.university.Course;
-import com.lvl.university.Student;
+import com.lvl.university.model.Course;
+import com.lvl.university.model.Student;
 
 public class UniversityApp {
 
@@ -13,7 +13,7 @@ public class UniversityApp {
 		System.out.println(john.getName());
 		System.out.println(mary.getName());
 		
-		Course course = new Course();
+		Course course = new Course("Object Oriented Programming", "1JAIL389");
 		john.addCourse(course, 'B');
 		
 		System.out.println(john.getName() + " GPA: " + john.getGPA());
