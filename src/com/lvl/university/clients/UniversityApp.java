@@ -1,5 +1,7 @@
 package com.lvl.university.clients;
 
+import com.lvl.university.collections.StudentLinkedList;
+import com.lvl.university.collections.StudentList;
 import com.lvl.university.model.Course;
 import com.lvl.university.model.Section;
 import com.lvl.university.model.Student;
@@ -21,11 +23,16 @@ public class UniversityApp {
 		
 		System.out.println(john.getName() + " GPA: " + john.getGPA());
 		
-		System.out.println(mary);
-		
 		Student.setMinimumGPA(4.5);
 		System.out.println("Minimum GPA: " + Student.getMinimumGPA());
 
+		
+		StudentList students = new StudentLinkedList();
+		students.add(john);
+		students.add(mary);
+		System.out.println(students);
+
+		
 	}
 
 }
