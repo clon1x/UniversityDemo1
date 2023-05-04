@@ -1,7 +1,9 @@
 package com.lvl.university.clients;
 
+import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -10,6 +12,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import com.lvl.university.collections.StudentLinkedList2;
@@ -25,64 +28,105 @@ class StudentLinkedList2Test {
 	@BeforeEach
 	void setUp() throws Exception {
 		studentList = new StudentLinkedList2();
-		studentList.add(john);
-		studentList.add(mary);
 	}
 
-	@Test
-	void testAdd() {
-		
-		// given
-		int expected = 2;
-		
-		// when
-		int actual = studentList.size();
-		
-		// then
-		assertEquals(expected, actual);
+	@Nested
+	class AddTests {
+
+		@Test
+		void should_ContainSingleStudent_When_AddedToList() {
+			
+			// given
+			Iterator<Student> iterator = studentList.iterator();
+			studentList.add(john);
+			int expectedSize = 1;
+			
+			// when
+			int actualSize = studentList.size();
+			Student student = iterator.next();
+			
+			// then
+			assertAll("Check list content",
+					() -> assertEquals(expectedSize, actualSize),
+					() -> assertSame(john, student),
+					() -> assertFalse(iterator.hasNext()));
+			
+		}
 		
 	}
+	
+	@Nested
+	class DeleteTests {
 
-	@Test
-	void testDeleteFirst() {
-		
-		// given 
-		int expected = 1;
-		
-		// when
-		studentList.delete(john);
-		int actual = studentList.size();
-		
-		// then
-		assertEquals(expected, actual);
-		
-	}
+		@Test
+		void testDeleteFirst() {
+			
+			// given 
+			Iterator<Student> iterator = studentList.iterator();
+			studentList.add(john);
+			studentList.add(mary);
+			int expectedSize = 1;
+			
+			// when
+			studentList.delete(john);
+			int actualSize = studentList.size();
+			
+			// then
+			assertAll("Verify List Content",
+					() -> assertEquals(expectedSize, actualSize), 
+					() -> assertSame(mary,iterator.next()),
+					() -> assertFalse(iterator.hasNext()));
+			
+		}
 
-	@Test
-	void testDeleteSecond() {
-		
-		// given 
-		int expected = 1;
-		
-		// when
-		studentList.delete(mary);
-		int actual = studentList.size();
-		
-		// then
-		assertEquals(expected, actual);
+		@Test
+		void testDeleteSecond() {
+			
+			// given 
+			Iterator<Student> iterator = studentList.iterator();
+			studentList.add(john);
+			studentList.add(mary);
+			int expectedSize = 1;
+			
+			// when
+			studentList.delete(mary);
+			int actualSize = studentList.size();
+			
+			// then
+			assertAll("Verify List Content",
+					() -> assertEquals(expectedSize, actualSize), 
+					() -> assertSame(mary,iterator.next()),
+					() -> assertFalse(iterator.hasNext()));
+			
+		}
 		
 	}
 
 	@Test
 	void testToString() {
-		String actual = studentList.toString();
-		System.out.println(actual);
+		
+		// given 
+		studentList.add(john);
+		studentList.add(mary);
+		String stringForJohn = john.toString();
+		String stringForMary = mary.toString();
+		
+		// when
+		String actualString = studentList.toString();
+		
+		// then
+		assertAll("Comprobar substrings",
+				() -> assertTrue(actualString.contains(stringForJohn)),
+				() -> assertTrue(actualString.contains(stringForMary)));
+		System.out.println(actualString);
 	}
 
 	@Test
 	void testIterator() {
 		
 		// given
+		studentList.add(john);
+		studentList.add(mary);
 		Set<Student> studentSet = new HashSet<>();
 		
 		// when
