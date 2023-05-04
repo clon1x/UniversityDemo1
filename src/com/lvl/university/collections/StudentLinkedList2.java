@@ -72,16 +72,19 @@ public class StudentLinkedList2 implements StudentList {
 
 	@Override
 	public void delete(Student student) {
+
 		if (head == null) return;
 		
 		if (head.getData() == student) {
 			head = head.next();
+			--size;
 			return;
 		}
 		
-		for (StudentNode current = head; current != null; current = current.next()) {
+		for (StudentNode current = head; current.next() != null; current = current.next()) {
 			if (current.next().getData() == student) {
 				current.setNextNode(current.next().next());
+				--size;
 				return;
 			}
 		}
