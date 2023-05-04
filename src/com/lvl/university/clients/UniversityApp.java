@@ -1,5 +1,7 @@
 package com.lvl.university.clients;
 
+import java.util.Iterator;
+
 import com.lvl.university.collections.StudentLinkedList;
 import com.lvl.university.collections.StudentList;
 import com.lvl.university.model.Course;
@@ -10,8 +12,8 @@ public class UniversityApp {
 
 	public static void main(String[] args) {
 		
-		Student john = new Student("John");
-		Student mary = new Student("Mary");
+		Student john = new Student("Holmes, Sherlock", "21, Baker Street, LONDON, England");
+		Student mary = new Student("Bell, Marie-Jeanne", "64 Lafayette Rd., PARIS, France");
 		
 		System.out.println(john.getName());
 		System.out.println(mary.getName());
@@ -30,8 +32,12 @@ public class UniversityApp {
 		StudentList students = new StudentLinkedList();
 		students.add(john);
 		students.add(mary);
-		System.out.println(students);
 
+		Iterator<Student> iterator = students.iterator();
+		while (iterator.hasNext()) {
+			Student student = iterator.next();
+			System.out.println(String.format("%1$-25s\tAddress: %2$-50s\tGPA: %3$-2s" , student.getName(), student.getAddress(), student.getGPA()));
+		}
 		
 	}
 

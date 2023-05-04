@@ -1,5 +1,6 @@
 package com.lvl.university.collections;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -23,7 +24,10 @@ public class StudentLinkedList implements StudentList {
 	public String toString() {
 		return "StudentLinkedList [students=" + students + "]";
 	}
-	
-	
+
+	@Override
+	public Iterator<Student> iterator() {
+		return students.iterator();
+	}
 
 }
