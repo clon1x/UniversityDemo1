@@ -3,6 +3,7 @@ package com.lvl.university;
 public class Student {
 
 	private String name;
+	private String address;
 	/**
 	 * Grade Point Average
 	 */
@@ -15,22 +16,25 @@ public class Student {
 	public String getName() {
 		return name;
 	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
 
-	public void addCourse(Course newCourse) {
-		//TODO code to store a ref to a new course in the student object
+	public String getAddress() {
+		return address;
 	}
 	
-	private void computeGPA() {
-		// code to access the stored courses, compute and set the gpa
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	
+
+	public void addCourse(Course newCourse, char grade) {
+		// use the grade and course to update GPA
+	}
+
 	public double getGPA() {
 		return gpa;
-	}
-	
-	public void assignGrade(Course course, char newGrade) {
-		// code to assign newGrade to a course
-		computeGPA();
 	}
 	
 }
