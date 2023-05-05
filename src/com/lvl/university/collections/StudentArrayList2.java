@@ -27,7 +27,7 @@ public class StudentArrayList2 implements StudentList {
 	}
 
 	private void reallocate(int newSize) {
-		Arrays.copyOf(students, newSize);
+		students = Arrays.copyOf(students, newSize);
 	}
 
 	@Override

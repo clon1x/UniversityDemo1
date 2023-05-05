@@ -1,4 +1,4 @@
-package com.lvl.university.clients;
+package com.lvl.university.collections;
 
 import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -39,7 +39,7 @@ class StudentLinkedList2Test {
 					Arguments.of(new StudentLinkedList()), 
 					Arguments.of(new StudentLinkedList2()),
 					Arguments.of(new StudentArrayList()),
-					Arguments.of(new StudentArrayList2()));
+					Arguments.of(new StudentArrayList2(4)));
 		}
 		
 	}
@@ -70,7 +70,7 @@ class StudentLinkedList2Test {
 
 		@ParameterizedTest
 		@ArgumentsSource(ArgProvider.class)
-		void should_ContainAll_When_SeveralStudentsAddedToList(StudentList studentList) {
+		void should_ContainAll_When_TwoStudentsAddedToList(StudentList studentList) {
 		
 			// given
 			studentList.add(john);
@@ -89,6 +89,34 @@ class StudentLinkedList2Test {
 					() -> assertTrue(studentSet.contains(john), "John should be in list"),
 					() -> assertTrue(studentSet.contains(mary), "Mary should be in list"));
 		
+		}
+		
+		@ParameterizedTest
+		@ArgumentsSource(ArgProvider.class)
+		void should_HaveCorrectSize_When_ManyStuddentsAddedToList(StudentList students) {
+			
+			// given
+			students.add(new Student("Anthony"));
+			students.add(new Student("Michael"));
+			students.add(new Student("Joseph"));
+			students.add(new Student("Christian"));
+			students.add(new Student("Mary"));
+			students.add(new Student("Xavier"));
+			students.add(new Student("Lewis"));
+			students.add(new Student("Glory"));
+			students.add(new Student("Albert"));
+			students.add(new Student("Charles"));
+			students.add(new Student("Henry"));
+			students.add(new Student("Anne"));
+
+			int expectedSize = 12;
+			
+			// when
+			int actualSize = students.size();
+
+			// then
+			assertEquals(expectedSize, actualSize, "Size should be as expected");
+			
 		}
 		
 	}
