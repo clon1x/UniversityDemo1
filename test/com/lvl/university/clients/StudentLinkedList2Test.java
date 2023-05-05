@@ -38,7 +38,8 @@ class StudentLinkedList2Test {
 			return Stream.of(
 					Arguments.of(new StudentLinkedList()), 
 					Arguments.of(new StudentLinkedList2()),
-					Arguments.of(new StudentArrayList()));
+					Arguments.of(new StudentArrayList()),
+					Arguments.of(new StudentArrayList2()));
 		}
 		
 	}
@@ -141,49 +142,60 @@ class StudentLinkedList2Test {
 		
 	}
 	
-	@ParameterizedTest
-	@ArgumentsSource(ArgProvider.class)
-	void should_ReturnExpectedString_When_ToStringGetsCalled(StudentList studentList) {
+	@Nested
+	class ToStringTests {
 
-		// given
-		studentList.add(john);
-		studentList.add(mary);
-		String stringForJohn = john.toString();
-		String stringForMary = mary.toString();
-		String expectedBeginning = "StudentList [Student [";
-
-		// when
-		String actualString = studentList.toString();
-
-		// then
-		assertAll("Verify substrings", 
-				() -> assertTrue(actualString.contains(stringForJohn), "String for John should be present"),
-				() -> assertTrue(actualString.contains(stringForMary), "String for Mary should be present"),
-				() -> assertEquals(expectedBeginning, actualString.substring(0, expectedBeginning.length()), "Should start with expected string"));
-	}
-
-	@ParameterizedTest
-	@ArgumentsSource(ArgProvider.class)
-	void should_ReturnIterator_When_IteratorCalled(StudentList studentList) {
-
-		// given
-		studentList.add(john);
-		studentList.add(mary);
-		Set<Student> studentSet = new HashSet<>();
-
-		// when
-		Iterator<Student> iterator = studentList.iterator();
-		while (iterator.hasNext()) {
-			studentSet.add(iterator.next());
+		@ParameterizedTest
+		@ArgumentsSource(ArgProvider.class)
+		void should_ReturnExpectedString_When_ToStringGetsCalled(StudentList studentList) {
+		
+			// given
+			studentList.add(john);
+			studentList.add(mary);
+			String expectedBeginning = "StudentList [Student [";
+		
+			// when
+			String actualString = studentList.toString();
+		
+			// then
+			assertAll("Verify substrings", 
+					() -> assertTrue(actualString.contains(john.toString()), "String for John should be present"),
+					() -> assertTrue(actualString.contains(mary.toString()), "String for Mary should be present"),
+					() -> assertEquals(expectedBeginning, actualString.substring(0, expectedBeginning.length()), "Should start with expected string"));
 		}
+		
+	}
+	
+	@Nested
+	class IteratorTests {
 
-		// then
-		assertAll( "Check iterator elements",
-				() -> assertNotNull(iterator), 
-				() -> assertEquals(2, studentSet.size(), "Size should be as expected"),
-				() -> assertTrue(studentSet.contains(john), "John should be in list"), 
-				() -> assertTrue(studentSet.contains(mary), "Mary should be in list"));
-
+		@ParameterizedTest
+		@ArgumentsSource(ArgProvider.class)
+		void should_ReturnIterator_When_IteratorCalled(StudentList studentList) {
+		
+			// given
+			studentList.add(john);
+			studentList.add(mary);
+			Set<Student> studentSet = new HashSet<>();
+			int expectedSize = 2;
+		
+			// when
+			Iterator<Student> iterator = studentList.iterator();
+			while (iterator.hasNext()) {
+				studentSet.add(iterator.next());
+			}
+			int actualSize = studentSet.size();
+		
+			// then
+			assertAll( "Check iterator elements",
+					() -> assertNotNull(iterator), 
+					() -> assertEquals(expectedSize, actualSize, "Size should be right"),
+					() -> assertTrue(studentSet.contains(john), "John should be in list"), 
+					() -> assertTrue(studentSet.contains(mary), "Mary should be in list"),
+					() -> assertFalse(studentSet.contains(null), "Set should not contain null"));
+		
+		}
+		
 	}
 
 }
