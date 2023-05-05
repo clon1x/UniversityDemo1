@@ -225,5 +225,45 @@ class StudentLinkedList2Test {
 		}
 		
 	}
+	
+	@Nested
+	class EqualsTests {
+		
+		@ParameterizedTest
+		@ArgumentsSource(ArgProvider.class)
+		void should_BeEqual_When_SameNameAndAddress() {
+			
+			// given 
+			String name = "John";
+			String address = "18th Union Street";
+			Student studentA = new Student(name, address);
+			Student studentB = new Student(name, address);
+			
+			// when
+			boolean condition = studentA.equals(studentB);
+			
+			// then
+			assertTrue(condition, "Students A and B should be equal");
+			
+		}
+		
+		
+		@ParameterizedTest
+		@ArgumentsSource(ArgProvider.class)
+		void should_NotBeEqual_When_DifferentName() {
+			
+			// given 
+			String address = "18th Union Street";
+			Student studentA = new Student("John", address);
+			Student studentB = new Student("Johnny", address);
+			
+			// when
+			boolean condition = studentA.equals(studentB);
+			
+			// then
+			assertFalse(condition, "Students A and B should not be equal");
+			
+		}
+	}
 
 }

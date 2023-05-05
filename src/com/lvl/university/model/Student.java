@@ -61,5 +61,15 @@ public class Student {
 	public String toString() {
 		return "Student [name=" + name + ", address=" + address + ", gpa=" + gpa + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Student) {
+			Student other = (Student) obj;
+			return (this.getName() == other.getName())
+					&& (this.getAddress() == other.getAddress());
+		}
+		return false;
+	}
 	
 }
