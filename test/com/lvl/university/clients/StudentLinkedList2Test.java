@@ -37,8 +37,8 @@ class StudentLinkedList2Test {
 		void should_ContainSingleStudent_When_AddedToList() {
 			
 			// given
-			Iterator<Student> iterator = studentList.iterator();
 			studentList.add(john);
+			Iterator<Student> iterator = studentList.iterator();
 			int expectedSize = 1;
 			
 			// when
@@ -62,13 +62,13 @@ class StudentLinkedList2Test {
 		void testDeleteFirst() {
 			
 			// given 
-			Iterator<Student> iterator = studentList.iterator();
 			studentList.add(john);
 			studentList.add(mary);
 			int expectedSize = 1;
 			
 			// when
 			studentList.delete(john);
+			Iterator<Student> iterator = studentList.iterator();
 			int actualSize = studentList.size();
 			
 			// then
@@ -83,19 +83,19 @@ class StudentLinkedList2Test {
 		void testDeleteSecond() {
 			
 			// given 
-			Iterator<Student> iterator = studentList.iterator();
 			studentList.add(john);
 			studentList.add(mary);
 			int expectedSize = 1;
 			
 			// when
 			studentList.delete(mary);
+			Iterator<Student> iterator = studentList.iterator();
 			int actualSize = studentList.size();
 			
 			// then
 			assertAll("Verify List Content",
 					() -> assertEquals(expectedSize, actualSize), 
-					() -> assertSame(mary,iterator.next()),
+					() -> assertSame(john,iterator.next()),
 					() -> assertFalse(iterator.hasNext()));
 			
 		}
@@ -117,8 +117,8 @@ class StudentLinkedList2Test {
 		// then
 		assertAll("Comprobar substrings",
 				() -> assertTrue(actualString.contains(stringForJohn)),
-				() -> assertTrue(actualString.contains(stringForMary)));
-		System.out.println(actualString);
+				() -> assertTrue(actualString.contains(stringForMary)),
+				() -> assertTrue(actualString.startsWith("StudentLinkedList2 [Student [name=")));
 	}
 
 	@Test
