@@ -93,7 +93,7 @@ public class StudentLinkedList2 implements StudentList {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("StudentLinkedList2 [");
+		builder.append("StudentList [");
 		
 		StudentNode current = head;
 		while (current != null) {

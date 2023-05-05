@@ -30,4 +30,14 @@ public class StudentArrayList implements StudentList {
 		return students.size();
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("StudentList [");
+		students.forEach(student -> builder.append(student + ", "));                            
+		builder.replace(builder.length() - 2, builder.length(), "");
+		builder.append("]");
+		return builder.toString();
+	}
+	
 }

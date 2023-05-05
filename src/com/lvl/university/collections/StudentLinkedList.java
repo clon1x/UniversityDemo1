@@ -22,7 +22,12 @@ public class StudentLinkedList implements StudentList {
 
 	@Override
 	public String toString() {
-		return "StudentLinkedList [students=" + students + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("StudentList [");
+		students.forEach(student -> builder.append(student + ", "));
+		builder.replace(builder.length() - 2, builder.length(), "");
+		builder.append("]");
+		return builder.toString();
 	}
 
 	@Override
