@@ -1,11 +1,17 @@
 package com.lvl.university.model;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class Course {
 
 	private String name;
 	private String id;
 	private String description;
 	private int credits;
+	private List<Section> sections = new ArrayList<>();
 	
 	public Course(String name, String id) {
 		super();
@@ -38,7 +44,19 @@ public class Course {
 	}
 	
 	public Section createSection(String semester, String place, String daysAndTimes) {
-		return new Section(this, semester, place, daysAndTimes);
+		Section section = new Section(this, semester, place, daysAndTimes);
+		sections.add(section);
+		return section;
+	}
+	
+	public List<Section> getUncompleteSections() {
+	    return sections.stream()
+	                    .filter(section -> section.getNumOfStudentsEnrolled() < section.getCapacity())
+	                    .collect(Collectors.toList());
+	}
+	
+	public Iterator<Section> sectionsIterator() {
+		return sections.iterator();
 	}
 	
 }
