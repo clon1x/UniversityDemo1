@@ -9,6 +9,12 @@ import com.lvl.university.model.Course;
 import com.lvl.university.model.Section;
 import com.lvl.university.model.Student;
 
+/**
+ * Demo client of the University system
+ * 
+ * @author Luis Viñé
+ *
+ */
 public class UniversityApp {
 
 	public static void main(String[] args) {

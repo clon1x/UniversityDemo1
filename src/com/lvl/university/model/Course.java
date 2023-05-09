@@ -5,11 +5,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Represents a course offered by the University
+ * 
+ * @author Luis Viñé
+ *
+ */
 public class Course {
 
 	private String name;
 	private String id;
 	private String description;
+	/**
+	 * Number of credits obtained when attending the course
+	 */
 	private int credits;
 	private List<Section> sections = new ArrayList<>();
 	
