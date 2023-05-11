@@ -17,7 +17,7 @@ public class Employee extends Person {
     }
 
     public void setAdress(String address, Person person) {
-        person.address = address;
+        person.setAddress(address);
     }
 
 }

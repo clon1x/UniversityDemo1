@@ -3,7 +3,7 @@ package com.lvl.university.model;
 public class Person {
 
     private String name;
-    protected String address;
+    private String address;
 
     public Person(String name) {
         this.name = name;

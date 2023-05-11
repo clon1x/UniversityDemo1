@@ -15,7 +15,7 @@ public class Student extends Person {
 	
 	public Student(String name, String address) {
 		super(name);
-		this.address = address;
+		setAddress(address);
 	}
 	
 	public static double getMinimumGPA() {
@@ -39,7 +39,7 @@ public class Student extends Person {
 
 	@Override
 	public String toString() {
-		return "Student [name=" + getName() + ", address=" + address + ", gpa=" + gpa + "]";
+		return "Student [name=" + getName() + ", address=" + getAddress() + ", gpa=" + gpa + "]";
 	}
 
 	@Override
