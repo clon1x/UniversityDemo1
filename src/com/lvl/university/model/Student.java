@@ -9,14 +9,12 @@ public class Student extends Person {
 	 */
 	private double gpa;
 
-	public Student() {}
-	
 	public Student(String name) {
-		this.name = name;
+		super(name);
 	}
 	
 	public Student(String name, String address) {
-		this.name = name;
+		super(name);
 		this.address = address;
 	}
 	
