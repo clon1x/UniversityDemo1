@@ -15,9 +15,9 @@ public class Employee extends Person {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-    
-    public void setName(String name, Person person) {
-        person.name = name;
+
+    public void setAdress(String address, Person person) {
+        person.address = address;
     }
 
 }

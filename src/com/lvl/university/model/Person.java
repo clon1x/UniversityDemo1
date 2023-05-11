@@ -2,7 +2,7 @@ package com.lvl.university.model;
 
 public class Person {
 
-    protected String name;
+    private String name;
     protected String address;
 
     public Person(String name) {

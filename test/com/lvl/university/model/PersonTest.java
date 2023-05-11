@@ -17,12 +17,13 @@ class PersonTest {
         // given
         Student john = new Student("John");
         Employee jack = new Employee("Jack");
+        String newAddress = "C/Nueva";
         
         // when
-        jack.setName("Peter", john);
+        jack.setAdress(newAddress, john);
         
         // then
-        assertEquals("Peter", john.getName());
+        assertEquals(newAddress, john.getAddress());
     }
 
 }

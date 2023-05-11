@@ -39,7 +39,7 @@ public class Student extends Person {
 
 	@Override
 	public String toString() {
-		return "Student [name=" + name + ", address=" + address + ", gpa=" + gpa + "]";
+		return "Student [name=" + getName() + ", address=" + address + ", gpa=" + gpa + "]";
 	}
 
 	@Override
