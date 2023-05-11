@@ -1,11 +1,9 @@
 package com.lvl.university.model;
 
-public class Student {
+public class Student extends Person {
 
 	private static double minimumGPA = 5;
 
-	private String name;
-	private String address;
 	/**
 	 * Grade Point Average
 	 */
@@ -30,22 +28,6 @@ public class Student {
 		Student.minimumGPA = minimumGPA;
 	}
 
-	public String getName() {
-		return name;
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-	
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public void addCourse(Course newCourse, char grade) {
 		// use the grade and course to update GPA
 		if (this.gpa < Student.minimumGPA) {
@@ -65,7 +47,7 @@ public class Student {
 	@Override
 	public boolean equals(Object obj) {
 		if (obj instanceof Student) {
-			Student other = (Student) obj;
+			Person other = (Person) obj;
 			return (this.getName() == other.getName())
 					&& (this.getAddress() == other.getAddress());
 		}

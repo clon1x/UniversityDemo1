@@ -17,8 +17,8 @@ class StudentTest {
 			// given 
 			String name = "John";
 			String address = "18th Union Street";
-			Student studentA = new Student(name, address);
-			Student studentB = new Student(name, address);
+			Person studentA = new Student(name, address);
+			Person studentB = new Student(name, address);
 			
 			// when
 			boolean condition = studentA.equals(studentB);
@@ -34,8 +34,8 @@ class StudentTest {
 			
 			// given 
 			String address = "18th Union Street";
-			Student studentA = new Student("John", address);
-			Student studentB = new Student("Johnny", address);
+			Person studentA = new Student("John", address);
+			Person studentB = new Student("Johnny", address);
 			
 			// when
 			boolean condition = studentA.equals(studentB);
